@@ -41,9 +41,9 @@ make tests
 
 endpoints URL is
 
-news - http://localhost:8080/v1/news
-topic - http://localhost:8080/v1/topic
-tag - http://localhost:8080/v1/tag
+- news http://localhost:8080/v1/news
+- topic http://localhost:8080/v1/topic
+- tag http://localhost:8080/v1/tag
 
 
 ### Create News
