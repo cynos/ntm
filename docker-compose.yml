@@ -1,0 +1,54 @@
+version: '3.9'
+services:
+  # Go app service
+  app:
+    container_name: news-topic-management
+    tty: true
+    build: .
+    ports:
+      - 8080:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - APP_PORT=${APP_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_DB=${REDIS_DB}
+      - REDIS_USERNAME=${REDIS_USERNAME}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    networks:
+      - net1
+  # redis service
+  redis:
+    image: redis:6
+    container_name: "redis"
+    networks:
+      - net1
+  # postgre service
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - 5431:5432
+    environment:
+      POSTGRES_PASSWORD: j4k4rt42022
+      POSTGRES_DB: news_topic_management
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    networks:
+      - net1
+volumes:
+  pg_data:
+# Networks to be created to facilitate communication between containers
+networks:
+  net1:
+    driver: bridge
