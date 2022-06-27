@@ -41,15 +41,15 @@ make tests
 
 endpoints URL is
 
-- news http://localhost:8080/v1/news
-- topic http://localhost:8080/v1/topic
-- tag http://localhost:8080/v1/tag
+- news http://localhost:8080/v1/news/
+- topic http://localhost:8080/v1/topic/
+- tag http://localhost:8080/v1/tag/
 
 
 ### Create News
 
 ```shell script
-curl -i -X POST http://localhost:8080/v1/news \
+curl -i -X POST http://localhost:8080/v1/news/ \
 -H 'Content-Type: application/json' \
 -d '{
 	"title": "How to start investment",
@@ -64,7 +64,7 @@ curl -i -X POST http://localhost:8080/v1/news \
 ### Create Topic
 
 ```shell script
-curl -i -X POST http://localhost:8080/v1/topic \
+curl -i -X POST http://localhost:8080/v1/topic/ \
 -H 'Content-Type: application/json' \
 -d '{"topic": "Investments"}'
 ```
@@ -72,7 +72,7 @@ curl -i -X POST http://localhost:8080/v1/topic \
 ### Create Tag
 
 ```shell script
-curl -i -X POST http://localhost:8080/v1/tag \
+curl -i -X POST http://localhost:8080/v1/tag/ \
 -H 'Content-Type: application/json' \
 -d '{"tag": "stock"}'
 ```
