@@ -37,9 +37,8 @@ services:
     image: postgres:latest
     container_name: postgres
     restart: always
-    ports:
-      - 5431:5432
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: j4k4rt42022
       POSTGRES_DB: news_topic_management
     volumes:
@@ -48,7 +47,6 @@ services:
       - net1
 volumes:
   pg_data:
-# Networks to be created to facilitate communication between containers
 networks:
   net1:
     driver: bridge
